@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "declaration": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "lib": ["es5", "es2015", "es2016", "dom"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "outDir": "dist",
+    "removeComments": false,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictFunctionTypes": false,
+    "strictNullChecks": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "target": "es5",
+    "typeRoots": ["./node_modules/@types"],
+    "types": ["node", "jest"],
+    "rootDir": "./src",
+    "paths": {
+      "*": ["./node_modules/@types/*", "./types/*"]
+    }
+  },
+  "files": ["./types/index.d.ts"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["./node_modules", "./dist", "src/**/*.test.ts", "src/**/*.test.tsx"]
+}

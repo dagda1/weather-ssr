@@ -1,0 +1,121 @@
+@import '../../assets/scss/main';
+
+path {
+  fill: $main-color;
+}
+
+.container {
+  h2 {
+    font-size: 6rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff, 0 0 55px #ffffff,
+      0 0 75px #ffffff;
+  }
+
+  ul {
+    margin-bottom: 0;
+  }
+
+  ul li {
+    display: inline-block;
+    vertical-align: middle;
+
+    @include mr(1);
+
+    @include mq-m {
+      &:not(.mobile__button__container) {
+        @include mr(3);
+      }
+    }
+
+    a {
+      position: relative;
+      top: 5px;
+
+      &:hover {
+        color: $main-color;
+      }
+    }
+  }
+}
+
+.active {
+  color: $white;
+}
+
+.expandable {
+  display: none;
+  position: absolute;
+  top: 16rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  background-color: $black;
+  z-index: 10;
+  padding: 1rem;
+}
+
+.mobile__button__container {
+  display: inline-flex;
+  justify-content: flex-end;
+  margin-left: 12px;
+  position: relative;
+
+  button {
+    position: absolute;
+    top: -12px;
+  }
+}
+
+@media (max-width: 37.5rem) {
+  .expandable.expanded {
+    display: block;
+
+    @include py(2);
+
+    ul li {
+      border: 1px solid #fff;
+      @include pt(1);
+      @include pb(2);
+      @include mb(1);
+      @include pl(1);
+      color: #fff;
+    }
+
+    ul li.horizontal {
+      display: block;
+      &:hover {
+        color: $black;
+        background-color: $white;
+      }
+      a {
+        &:hover {
+          color: $black;
+        }
+
+        display: block;
+      }
+    }
+  }
+
+  ul li.horizontal {
+    display: none;
+  }
+
+  ul li.menu__mobile__button__container {
+    @include ml(1);
+  }
+
+  ul li.horizontal.expanded {
+    display: block;
+
+    a {
+      width: 100%;
+      display: inline-block;
+    }
+  }
+}

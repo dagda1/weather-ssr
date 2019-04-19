@@ -1,0 +1,79 @@
+@import 'main';
+@import '~@cutting/react-gel/tools';
+@import '~@cutting/react-gel/grid';
+
+@font-face {
+  font-family: 'GeosansLight';
+  src: url('../fonts/GeosansLight/GeosansLight.ttf');
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  font-family: 'GeosansLight';
+  font-size: 62.5%;
+  overflow-y: scroll;
+  position: relative;
+  min-height: 100%;
+}
+
+html,
+body {
+  color: $main-color;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  font-size: 190%;
+  padding-bottom: 150px;
+  background-image: url(../images/lightening.jpg);
+  background-color: $main-bg-color;
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  @include mq-l {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0;
+  }
+
+  @include mq-l {
+    font-size: 190%;
+  }
+}
+
+ul {
+  margin-top: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+}
+
+a,
+button {
+  &:hover {
+    color: $main-color;
+  }
+
+  &:focus {
+    @include accessible-outline;
+    color: $black;
+  }
+}
+
+:global .wrapper {
+  margin: 0 auto;
+  max-width: $desktop-max-width !important;
+}
