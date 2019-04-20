@@ -15,17 +15,17 @@ export interface Configs {
 // but in some key value store like foreman or vault
 export const configs: Configs = {
   [environments.development]: {
-    baseUrl: '//api.openweathermap.org/data/2.5/forecast',
+    baseUrl: '://api.openweathermap.org/data/2.5/forecast',
     apiKey: 'dc89e20b249f80663e8e415ee905f19e'
   },
   [environments.test]: {
-    baseUrl: '//foobar/forecast',
+    baseUrl: '://foobar/forecast',
     apiKey: '6667777'
   },
   [environments.production]: {
-    baseUrl: '//api.openweathermap.org/data/2.5/forecast',
+    baseUrl: '://api.openweathermap.org/data/2.5/forecast',
     apiKey: 'dc89e20b249f80663e8e415ee905f19e'
   }
 };
 
-export const currentConfig = configs[env];
+export const currentConfig = configs[env] as Config;

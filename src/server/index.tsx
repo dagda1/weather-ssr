@@ -15,6 +15,8 @@ import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import { ApplicationLayout } from '../layouts/ApplicationLayout';
 import { currentConfig } from './config';
+import axios from 'axios';
+import circularJson from 'circular-json';
 
 const assets: Assets = require(process.env.CUTTING_ASSETS_MANIFEST as string) as Assets;
 
@@ -64,14 +66,26 @@ const createConnectedLayout = (store: Store): React.FunctionComponent<LayoutProp
   return Wrapped;
 };
 
-app.get('/weather/:city', (req: Request, res: Response) => {
-  const city = req.param('city');
+// TODO: would have a separate package/processs for the api
+// using https://github.com/TypedProject/ts-express-decorators
+app.get('/weather/:city', async (req: Request, res: Response) => {
+  const city = req.params.city;
+
+  console.log(req.protocol);
 
   const { baseUrl, apiKey } = currentConfig;
 
-  const url = `${baseUrl}?q=${encodeURIComponent(city)},uk&APPID=${apiKey}`;
+  const url = `${req.protocol}${baseUrl}?q=${encodeURIComponent(city)},uk&APPID=${apiKey}`;
 
-  res.status(HttpStatusCode.Ok).json({ ...currentConfig, url });
+  try {
+    const results = await axios.get(url);
+
+    res.status(HttpStatusCode.Ok).json(circularJson.stringify(results));
+  } catch (ex) {
+    console.error(ex);
+
+    res.status(HttpStatusCode.InternalServerError).send('Internal Server Error');
+  }
 });
 
 app.get('/*', async (req: Request, res: Response) => {
