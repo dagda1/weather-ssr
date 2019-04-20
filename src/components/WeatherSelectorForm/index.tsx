@@ -4,6 +4,9 @@ import { withFormik, FormikProps } from 'formik';
 import { ConnectedFormInput } from '@cutting/connected-components';
 import axios from 'axios';
 import { HttpStatusCode } from '@cutting/util';
+import { connect } from 'react-redux';
+import { push } from 'connected-react-router';
+import * as Urls from '../../urls';
 
 require('./WeatherSelectorForm.scss');
 
@@ -11,11 +14,11 @@ export interface WeatherState {
   city: string;
 }
 
-const MyForm: React.FunctionComponent<FormikProps<WeatherState>> = (props) => {
+const Form: React.FunctionComponent<FormikProps<WeatherState>> = (props) => {
   const { handleSubmit } = props;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form action="/weather" onSubmit={handleSubmit}>
       <ConnectedFormInput {...props} name="city" label="city" placeholder="enter the dragon" />
       <Button type="submit" buttonStyle={ButtonStyle.Primary}>
         Submit
@@ -24,7 +27,7 @@ const MyForm: React.FunctionComponent<FormikProps<WeatherState>> = (props) => {
   );
 };
 
-export const WeatherSelectorForm = withFormik({
+export const WeatherSelectorFormView = withFormik<{ push: typeof push }, WeatherState>({
   mapPropsToValues: () => ({ city: '' }),
 
   validate: (values) => {
@@ -37,14 +40,20 @@ export const WeatherSelectorForm = withFormik({
     return errors;
   },
 
-  handleSubmit: async (values, { setSubmitting, setFieldError }) => {
+  handleSubmit: async (values, { setSubmitting, setFieldError, props }) => {
     try {
-      const results = await axios.get(['', 'weather', encodeURIComponent(values.city)].join('/'));
+      const results = await axios.post(['', 'weather', encodeURIComponent(values.city)].join('/'));
 
       const forecasts = JSON.parse(results.data).data.list;
 
+      push(Urls.Forecast);
+
       console.log(forecasts);
     } catch (err) {
+      console.error(err);
+      if (!err.response) {
+        return;
+      }
       const errorMessage =
         err.response.status === HttpStatusCode.NotFound ? 'No such city' : 'Houston, we have a problem';
 
@@ -55,4 +64,11 @@ export const WeatherSelectorForm = withFormik({
   },
 
   displayName: 'WeatherForm'
-})(MyForm);
+})(Form);
+
+export const WeatherSelectorForm = connect(
+  null,
+  {
+    push
+  }
+)(WeatherSelectorFormView);

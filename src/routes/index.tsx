@@ -17,7 +17,16 @@ export const routes: Page[] = [
     heading: 'Home',
     path: Urls.Home,
     component: asyncComponent({
-      loader: () => import('../components/Home').then((module) => module.Home),
+      loader: () => import('../containers/Home').then((module) => module.HomeView),
+      Placeholder: () => <Loading />
+    }),
+    exact: true
+  },
+  {
+    heading: 'Forecast',
+    path: Urls.Forecast,
+    component: asyncComponent({
+      loader: () => import('../components/ForecastView').then((module) => module.ForecastView),
       Placeholder: () => <Loading />
     }),
     exact: true

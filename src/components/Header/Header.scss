@@ -1,1 +1,29 @@
+@import '../../assets/scss/main';
 
+.container {
+  h2 {
+    @include mt(2);
+    font-size: 2rem;
+    @include mq-m {
+      font-size: 3rem;
+    }
+    @include mq-l {
+      margin-top: 0;
+      font-size: 4rem;
+    }
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff, 0 0 55px #ffffff,
+      0 0 75px #ffffff;
+  }
+}
+
+form input {
+  font-size: inherit;
+}
+
+.active {
+  color: $white;
+}

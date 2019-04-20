@@ -68,7 +68,7 @@ const createConnectedLayout = (store: Store): React.FunctionComponent<LayoutProp
 
 // TODO: would have a separate package/processs for the api
 // using https://github.com/TypedProject/ts-express-decorators
-app.get('/weather/:city', async (req: Request, res: Response) => {
+app.post('/weather/:city', async (req: Request, res: Response) => {
   const city = req.params.city;
 
   const { baseUrl, apiKey } = currentConfig;

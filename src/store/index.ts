@@ -1,16 +1,16 @@
-import { createStore, applyMiddleware, compose } from "redux";
-import { History } from "history";
-import { routerMiddleware } from "connected-react-router";
-import reducers from "../reducers";
-import { State } from "../reducers/types";
+import { createStore, applyMiddleware, compose } from 'redux';
+import { History } from 'history';
+import { routerMiddleware } from 'connected-react-router';
+import reducers from '../reducers';
+import { State } from '../reducers/types';
 
 const configureStore = (initialState: State, history: History) => {
   const middlewares = [routerMiddleware(history)];
-  const enhancers = middlewares.map(a => applyMiddleware(a));
+  const enhancers = middlewares.map((a) => applyMiddleware(a));
 
   const getComposeFunc = () => {
     if (process.env.BROWSER && __DEV__) {
-      const { composeWithDevTools } = require("redux-devtools-extension");
+      const { composeWithDevTools } = require('redux-devtools-extension');
       return composeWithDevTools;
     }
 
@@ -23,8 +23,8 @@ const configureStore = (initialState: State, history: History) => {
   const store = createStore(reducers, initialState, composedEnhancers);
 
   if (__DEV__ && module.hot) {
-    module.hot.accept("../reducers", () => {
-      store.replaceReducer(require("../reducers").default);
+    module.hot.accept('../reducers', () => {
+      store.replaceReducer(require('../reducers').default);
     });
   }
 
