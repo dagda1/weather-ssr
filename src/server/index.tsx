@@ -71,8 +71,6 @@ const createConnectedLayout = (store: Store): React.FunctionComponent<LayoutProp
 app.get('/weather/:city', async (req: Request, res: Response) => {
   const city = req.params.city;
 
-  console.log(req.protocol);
-
   const { baseUrl, apiKey } = currentConfig;
 
   const url = `${req.protocol}${baseUrl}?q=${encodeURIComponent(city)},uk&APPID=${apiKey}`;
@@ -82,9 +80,7 @@ app.get('/weather/:city', async (req: Request, res: Response) => {
 
     res.status(HttpStatusCode.Ok).json(circularJson.stringify(results));
   } catch (ex) {
-    console.error(ex);
-
-    res.status(HttpStatusCode.InternalServerError).send('Internal Server Error');
+    res.status(ex.response.status).json({ status: ex.response.status, responseText: ex.response.statusText });
   }
 });
 
