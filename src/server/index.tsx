@@ -13,6 +13,7 @@ import configureStore from '../store';
 import { history } from '../routes/history';
 import { Store } from 'redux';
 import { Provider } from 'react-redux';
+import { ApplicationLayout } from '../layouts/ApplicationLayout';
 
 const assets: Assets = require(process.env.CUTTING_ASSETS_MANIFEST as string) as Assets;
 
@@ -51,7 +52,11 @@ if (isProduction) {
 /* eslint-disable no-console */
 
 const createConnectedLayout = (store: Store): React.FunctionComponent<LayoutProps> => {
-  const Wrapped: React.FunctionComponent<LayoutProps> = ({ children }) => <Provider store={store}>{children}</Provider>;
+  const Wrapped: React.FunctionComponent<LayoutProps> = ({ children }) => (
+    <ApplicationLayout>
+      <Provider store={store}>{children}</Provider>
+    </ApplicationLayout>
+  );
 
   Wrapped.displayName = getDisplayName(Wrapped);
 

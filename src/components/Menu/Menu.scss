@@ -6,7 +6,15 @@ path {
 
 .container {
   h2 {
-    font-size: 6rem;
+    @include mt(2);
+    font-size: 2rem;
+    @include mq-m {
+      font-size: 3rem;
+    }
+    @include mq-l {
+      margin-top: 0;
+      font-size: 4rem;
+    }
     margin-top: 0;
     margin-bottom: 0;
     padding-top: 0;
@@ -42,80 +50,10 @@ path {
   }
 }
 
+form input {
+  font-size: inherit;
+}
+
 .active {
   color: $white;
-}
-
-.expandable {
-  display: none;
-  position: absolute;
-  top: 16rem;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow: auto;
-  background-color: $black;
-  z-index: 10;
-  padding: 1rem;
-}
-
-.mobile__button__container {
-  display: inline-flex;
-  justify-content: flex-end;
-  margin-left: 12px;
-  position: relative;
-
-  button {
-    position: absolute;
-    top: -12px;
-  }
-}
-
-@media (max-width: 37.5rem) {
-  .expandable.expanded {
-    display: block;
-
-    @include py(2);
-
-    ul li {
-      border: 1px solid #fff;
-      @include pt(1);
-      @include pb(2);
-      @include mb(1);
-      @include pl(1);
-      color: #fff;
-    }
-
-    ul li.horizontal {
-      display: block;
-      &:hover {
-        color: $black;
-        background-color: $white;
-      }
-      a {
-        &:hover {
-          color: $black;
-        }
-
-        display: block;
-      }
-    }
-  }
-
-  ul li.horizontal {
-    display: none;
-  }
-
-  ul li.menu__mobile__button__container {
-    @include ml(1);
-  }
-
-  ul li.horizontal.expanded {
-    display: block;
-
-    a {
-      width: 100%;
-      display: inline-block;
-    }
-  }
 }

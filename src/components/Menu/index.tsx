@@ -4,7 +4,6 @@ import cs from 'classnames';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { bannerPages } from '../../routes';
-import { MobileNavButton } from '../MobileNavButton';
 
 const styles = require('./Menu.scss');
 
@@ -47,9 +46,6 @@ export class Menu extends React.Component<{}, MenuState> {
               <ul>
                 <li>
                   <Heading level={2}>React SSR Weather</Heading>
-                </li>
-                <li className={styles.mobile__button__container}>
-                  <MobileNavButton onClick={this.toggleIsExpanded} isActive={this.state.isExpanded} />
                 </li>
                 {this.menuItems()}
               </ul>

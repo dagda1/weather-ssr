@@ -14,10 +14,7 @@
 }
 
 html {
-  font-size: 62.5%;
-  @include mq-l {
-    font: 16px/1.25 'GeosansLight';
-  }
+  font: 16px/1.25 'GeosansLight';
   overflow-y: scroll;
   position: relative;
   min-height: 100%;
@@ -33,7 +30,7 @@ body {
 
 body {
   margin: 0;
-  font-size: 190%;
+  font-size: 100%;
   padding-bottom: 150px;
   background-image: url(../images/lightening.jpg);
   background-color: $main-bg-color;
