@@ -14,6 +14,7 @@ import { history } from '../routes/history';
 import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import { ApplicationLayout } from '../layouts/ApplicationLayout';
+import { currentConfig } from './config';
 
 const assets: Assets = require(process.env.CUTTING_ASSETS_MANIFEST as string) as Assets;
 
@@ -63,7 +64,17 @@ const createConnectedLayout = (store: Store): React.FunctionComponent<LayoutProp
   return Wrapped;
 };
 
-app.get('/*', async (req, res) => {
+app.get('/weather/:city', (req: Request, res: Response) => {
+  const city = req.param('city');
+
+  const { baseUrl, apiKey } = currentConfig;
+
+  const url = `${baseUrl}?q=${encodeURIComponent(city)},uk&APPID=${apiKey}`;
+
+  res.status(HttpStatusCode.Ok).json({ ...currentConfig, url });
+});
+
+app.get('/*', async (req: Request, res: Response) => {
   const preloadedState = {};
 
   const store = configureStore(preloadedState, history);
