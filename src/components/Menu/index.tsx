@@ -46,7 +46,7 @@ export class Menu extends React.Component<{}, MenuState> {
             <GelItem>
               <ul>
                 <li>
-                  <Heading level={2}>React SSR Weather - Enter the dragon</Heading>
+                  <Heading level={2}>React SSR Weather</Heading>
                 </li>
                 <li className={styles.mobile__button__container}>
                   <MobileNavButton onClick={this.toggleIsExpanded} isActive={this.state.isExpanded} />

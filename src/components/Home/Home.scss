@@ -1,9 +1,17 @@
 @import '../../assets/scss/main';
 
 .main {
-  display: none;
+  @include mt(2);
 
-  @include mq-l {
-    display: block;
+  label {
+    text-transform: capitalize;
+  }
+
+  button {
+    @include mt(2);
+
+    @include mq-m {
+      margin-top: auto;
+    }
   }
 }

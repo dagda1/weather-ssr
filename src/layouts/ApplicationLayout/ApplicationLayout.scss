@@ -1,9 +1,12 @@
+@import '../../assets/scss/main';
+
 .main {
   h1 {
     margin-top: 0;
     margin-bottom: 0;
     padding-top: 0;
     padding-bottom: 0;
+    @include mt(4);
 
     &.italic {
       color: #fff;

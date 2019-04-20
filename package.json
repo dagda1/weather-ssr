@@ -9,16 +9,17 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "start": "NODE_ENV=development cutting ssr-start",
-    "debug": "yarn start -- --inspect=localhost:9230",
-    "build": "NODE_ENV=production cutting ssr-build",
-    "test": "NODE_ENV=test cutting test",
-    "serve": "NODE_ENV=production node ./dist/server.js"
+    "start": "cross-env NODE_ENV=development cutting ssr-start",
+    "build": "cross-env NODE_ENV=production cutting ssr-build",
+    "test": "cross-env NODE_ENV=test cutting test",
+    "serve": "cross-env NODE_ENV=production node ./dist/server.js"
   },
   "dependencies": {
-    "@cutting/afterafterjs": "0.1.0",
-    "@cutting/component-library": "^0.4.1",
-    "@cutting/util": "^0.5.1",
+    "@cutting/afterafterjs": "0.2.0",
+    "@cutting/component-library": "^0.5.0",
+    "@cutting/connected-components": "^0.6.1",
+    "@cutting/react-gel": "^0.6.2",
+    "@cutting/util": "^0.6.0",
     "body-parser": "^1.18.2",
     "classnames": "^2.2.6",
     "connected-react-router": "^6.3.2",
@@ -35,6 +36,7 @@
     "react-router": "5.0.0",
     "react-router-dom": "5.0.0",
     "redux": "^4.0.1",
+    "serve-favicon": "^2.5.0",
     "use-methods": "^0.4.5",
     "zlib": "^1.0.5"
   },

@@ -21,7 +21,7 @@ export const ApplicationLayout: React.FunctionComponent<ApplicationLayoutProps> 
   className,
   children
 }) => (
-  <Wrap>
+  <>
     <Header />
     <main className={cs(styles.main, 'wrapper', className)}>
       {heading && (
@@ -47,5 +47,5 @@ export const ApplicationLayout: React.FunctionComponent<ApplicationLayoutProps> 
       </Wrap>
     </main>
     <Footer />
-  </Wrap>
+  </>
 );
