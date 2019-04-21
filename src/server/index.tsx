@@ -47,7 +47,7 @@ if (isProduction) {
         defaultSrc: ["'self'"],
         scriptSrc: ["'self'"],
         styleSrc: ["'self'"],
-        imgSrc: ["'self'", 'data:']
+        imgSrc: ["'self'", 'openweathermap.org', 'data:']
       }
     })
   );

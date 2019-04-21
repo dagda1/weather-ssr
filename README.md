@@ -1,3 +1,3 @@
-# @ccutting/website
+# Weather techical test
 
 ## WIP

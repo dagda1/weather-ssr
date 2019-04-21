@@ -12,7 +12,8 @@
     "start": "cross-env NODE_ENV=development cutting ssr-start",
     "build": "cross-env NODE_ENV=production cutting ssr-build",
     "test": "cross-env NODE_ENV=test cutting test",
-    "serve": "cross-env NODE_ENV=production node ./dist/server.js"
+    "start:pm2": "pm2 start ./ecosystem.config.js --only weather-ssr --env production",
+    "stop:pm2": "pm2 stop ./ecosystem.config.js --only weather-ssr --env productio"
   },
   "dependencies": {
     "@cutting/afterafterjs": "0.4.0",
@@ -51,7 +52,6 @@
     "@cutting/devtools": "^0.9.1",
     "@intervolga/optimize-cssnano-plugin": "^1.0.6",
     "@types/assets-webpack-plugin": "^3.9.0",
-    "@types/axios": "^0.14.0",
     "@types/classnames": "^2.2.6",
     "@types/date-fns": "^2.6.0",
     "@types/enzyme": "^3.9.1",
