@@ -2,7 +2,11 @@
 
 .row {
   display: flex;
-  align-items: flex-flex;
+  align-items: center;
+
+  @include mq-s {
+    align-items: initial;
+  }
 
   div {
     @include px(2);
