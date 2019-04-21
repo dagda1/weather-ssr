@@ -42,13 +42,13 @@ export const WeatherSelectorFormView = withFormik<{ push: typeof push }, Weather
 
   handleSubmit: async (values, { setSubmitting, setFieldError, props }) => {
     try {
-      const results = await axios.post(['', 'weather', encodeURIComponent(values.city)].join('/'));
+      // const results = await axios.post(['', 'weather', encodeURIComponent(values.city)].join('/'));
 
-      const forecasts = JSON.parse(results.data).data.list;
+      // const forecasts = JSON.parse(results.data).data.list;
 
-      push(Urls.Forecast);
+      props.push(Urls.Forecast);
 
-      console.log(forecasts);
+      // console.log(forecasts);
     } catch (err) {
       console.error(err);
       if (!err.response) {

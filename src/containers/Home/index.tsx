@@ -4,7 +4,7 @@ import { WeatherSelectorForm } from '../../components/WeatherSelectorForm';
 
 const styles = require('./Home.scss');
 
-export const HomeView: React.FunctionComponent = () => (
+export const Home: React.FunctionComponent = () => (
   <ApplicationLayout heading="Choose your city">
     <div className={styles.main}>
       <WeatherSelectorForm />

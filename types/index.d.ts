@@ -1,5 +1,5 @@
 declare var __DEV__: boolean;
-declare var BROWSER: boolean;
+declare var __BROWSER__: boolean;
 
 declare interface NodeModule {
   hot: {

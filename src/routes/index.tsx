@@ -17,7 +17,7 @@ export const routes: Page[] = [
     heading: 'Home',
     path: Urls.Home,
     component: asyncComponent({
-      loader: () => import('../containers/Home').then((module) => module.HomeView),
+      loader: () => import('../containers/Home').then((module) => module.Home),
       Placeholder: () => <Loading />
     }),
     exact: true
