@@ -1,0 +1,10 @@
+@import '../../assets/scss/main';
+
+.row {
+  display: flex;
+  align-items: flex-flex;
+
+  div {
+    @include px(1);
+  }
+}

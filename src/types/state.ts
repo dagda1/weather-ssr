@@ -1,7 +1,7 @@
 import { Forecast } from './forecast';
 
 export interface ForecastState {
-  forecasts: Forecast[];
+  forecast: Forecast | undefined;
   loading: boolean;
   error: string | undefined;
 }

@@ -1,11 +1,13 @@
 import { ForecastActions, ForecastActionTypes } from './types';
 import { Reducer } from 'redux';
 import { tassign } from 'tassign';
-var parse = require('date-fns/parse');
-import format from 'date-fns/format';
 import { ForecastState } from '../../types/state';
+import groupBy from 'lodash.groupby';
+import format from 'date-fns/format';
 
-export const initialForecastState: ForecastState = { forecasts: [], loading: false, error: undefined };
+const parse = require('date-fns/parse');
+
+export const initialForecastState: ForecastState = { forecast: undefined, loading: false, error: undefined };
 
 export const forecastReducer: Reducer<ForecastState, ForecastActions> = (state = initialForecastState, action) => {
   switch (action.type) {
@@ -18,18 +20,27 @@ export const forecastReducer: Reducer<ForecastState, ForecastActions> = (state =
     }
 
     case ForecastActionTypes.FORECAST_SUCCESS: {
+      const days = groupBy(action.payload.list, (day) => day.dt_txt.substring(0, 10));
+
       return tassign(state, {
-        forecasts: action.payload.list.map((forecast) => {
-          const date = parse(forecast.dt);
-          return {
-            id: forecast.dt,
-            dateKey: forecast.dt_txt.substring(0, 10),
-            date,
-            outlook: forecast.weather[0].description,
-            icon: forecast.weather[0].icon,
-            time: format(date, 'HH:mm')
-          };
-        }),
+        forecast: {
+          city: action.payload.city.name,
+          dates: Object.keys(days).map((date) => ({
+            id: date,
+            date
+          })),
+          forecasts: action.payload.list.map((forecast) => {
+            const date = parse(forecast.dt);
+            return {
+              id: forecast.dt,
+              dateKey: forecast.dt_txt.substring(0, 10),
+              date,
+              outlook: forecast.weather[0].description,
+              icon: forecast.weather[0].icon,
+              time: format(date, 'HH:mm')
+            };
+          })
+        },
         loading: false,
         error: undefined
       });

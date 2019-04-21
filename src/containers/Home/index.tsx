@@ -21,7 +21,7 @@ export interface HomeProps {
 interface StoreState {
   loading: boolean;
   error: string | undefined;
-  forecasts: Forecast[];
+  forecast: Forecast;
 }
 
 type Props = HomeProps & StoreState;
@@ -32,8 +32,11 @@ export class HomeView extends React.Component<Props> {
       return;
     }
 
-    if (prevProps.forecasts.length === 0 && this.props.forecasts.length > 0) {
-      props.goToResults();
+    const prevForecast = prevProps.forecast;
+    const forecast = this.props.forecast;
+
+    if (!prevForecast && !!forecast) {
+      this.props.goToResults();
     }
   }
 
@@ -54,12 +57,12 @@ export const Home = connect(
   (state: State) => ({
     loading: isLoadingSelector(state),
     error: errorSelector(state),
-    forecasts: forecastSelector(state)
+    forecast: forecastSelector(state)
   }),
   (dispatch) => {
     return {
       query: (city: string) => dispatch(queryForecast(city)),
-      goToResults: () => push(Urls.Forecast)
+      goToResults: () => dispatch(push(Urls.Forecast))
     };
   }
 )(HomeView);

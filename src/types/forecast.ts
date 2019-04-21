@@ -1,5 +1,5 @@
 export interface ForecastResponse {
-  cnt: 40;
+  cnt: number;
   list: {
     dt: number;
     main: {
@@ -44,11 +44,22 @@ export interface ForecastResponse {
   };
 }
 
-export interface Forecast {
+export interface Weather {
   id: number;
   dateKey: string;
   date: Date;
   outlook: string;
   icon: string;
   time: string;
+}
+
+export interface WeatherDate {
+  id: string;
+  date: string;
+}
+
+export interface Forecast {
+  city: string;
+  dates: WeatherDate[];
+  forecasts: Weather[];
 }

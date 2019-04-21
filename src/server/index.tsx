@@ -70,7 +70,6 @@ const createConnectedLayout = (store: Store): React.FunctionComponent<LayoutProp
 // TODO: would have a separate package/processs for the api
 // using https://github.com/TypedProject/ts-express-decorators
 app.post('/weather/:city', async (req: Request, res: Response) => {
-  console.log('cuntiesssss');
   const city = req.params.city;
 
   const { baseUrl, apiKey } = currentConfig;
@@ -88,7 +87,7 @@ app.post('/weather/:city', async (req: Request, res: Response) => {
 });
 
 app.get('/*', async (req: Request, res: Response) => {
-  const preloadedState: State = { forecast: { loading: false, error: undefined, forecasts: [] } };
+  const preloadedState: State = { forecast: { loading: false, error: undefined, forecast: undefined } };
 
   const store = configureStore(preloadedState, history);
 

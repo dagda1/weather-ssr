@@ -26,7 +26,7 @@ export const routes: Page[] = [
     heading: 'Forecast',
     path: Urls.Forecast,
     component: asyncComponent({
-      loader: () => import('../components/ForecastView').then((module) => module.ForecastView),
+      loader: () => import('../containers/ForecastView').then((module) => module.ConnectedForecast),
       Placeholder: () => <Loading />
     }),
     exact: true
