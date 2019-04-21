@@ -9,6 +9,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
+    "doitall": "cross-env npm i && npm start",
     "start": "cross-env NODE_ENV=development cutting ssr-start",
     "build": "cross-env NODE_ENV=production cutting ssr-build",
     "test": "cross-env NODE_ENV=test cutting test",
