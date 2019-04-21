@@ -5,7 +5,7 @@ import { ForecastState } from '../../types/state';
 import groupBy from 'lodash.groupby';
 import format from 'date-fns/format';
 
-const parse = require('date-fns/parse');
+const { fromUnixTime } = require('date-fns');
 
 export const initialForecastState: ForecastState = { forecast: undefined, loading: false, error: undefined };
 
@@ -30,7 +30,7 @@ export const forecastReducer: Reducer<ForecastState, ForecastActions> = (state =
             date
           })),
           forecasts: action.payload.list.map((forecast) => {
-            const date = parse(forecast.dt);
+            const date = fromUnixTime(forecast.dt);
             return {
               id: forecast.dt,
               dateKey: forecast.dt_txt.substring(0, 10),

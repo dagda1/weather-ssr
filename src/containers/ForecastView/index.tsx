@@ -10,6 +10,8 @@ import { Day } from '../../components/Day';
 import { Button, ButtonStyle } from '@cutting/component-library';
 import { clearState } from '../Home/actions';
 
+const styles = require('./ForecastView.scss');
+
 export interface ForecastViewProps {
   forecast: Forecast;
   goHome: () => void;
@@ -43,12 +45,14 @@ export class ForecastView extends React.Component<ForecastViewProps> {
 
     return (
       <ApplicationLayout heading={city}>
-        {dates.map((date) => (
-          <Day key={date.id} date={date} />
-        ))}
-        <Button type="button" onClick={this.clickHandler} buttonStyle={ButtonStyle.Primary}>
-          Back
-        </Button>
+        <div className={styles.main}>
+          {dates.map((date) => (
+            <Day key={date.id} date={date} />
+          ))}
+          <Button type="button" onClick={this.clickHandler} buttonStyle={ButtonStyle.Primary}>
+            Back
+          </Button>
+        </div>
       </ApplicationLayout>
     );
   }
