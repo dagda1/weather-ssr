@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import Helmet from 'react-helmet';
 import { Store } from 'redux';
 import { ConnectedRouter } from 'connected-react-router';
-import { State } from '../../reducers/types';
+import { State } from '../../types/state';
 
 export interface AppProps {
   store: Store<State>;

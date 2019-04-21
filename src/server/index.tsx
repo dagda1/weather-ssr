@@ -17,6 +17,7 @@ import { ApplicationLayout } from '../layouts/ApplicationLayout';
 import { currentConfig } from './config';
 import axios from 'axios';
 import circularJson from 'circular-json';
+import { State } from '../types/state';
 
 const assets: Assets = require(process.env.CUTTING_ASSETS_MANIFEST as string) as Assets;
 
@@ -69,6 +70,7 @@ const createConnectedLayout = (store: Store): React.FunctionComponent<LayoutProp
 // TODO: would have a separate package/processs for the api
 // using https://github.com/TypedProject/ts-express-decorators
 app.post('/weather/:city', async (req: Request, res: Response) => {
+  console.log('cuntiesssss');
   const city = req.params.city;
 
   const { baseUrl, apiKey } = currentConfig;
@@ -80,12 +82,13 @@ app.post('/weather/:city', async (req: Request, res: Response) => {
 
     res.status(HttpStatusCode.Ok).json(circularJson.stringify(results));
   } catch (ex) {
+    console.log(ex.response.statusText);
     res.status(ex.response.status).json({ status: ex.response.status, responseText: ex.response.statusText });
   }
 });
 
 app.get('/*', async (req: Request, res: Response) => {
-  const preloadedState = {};
+  const preloadedState: State = { forecast: { loading: false, error: undefined, forecasts: [] } };
 
   const store = configureStore(preloadedState, history);
 

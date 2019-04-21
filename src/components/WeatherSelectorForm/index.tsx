@@ -1,12 +1,8 @@
 import React from 'react';
-import { Button, ButtonStyle } from '@cutting/component-library';
+import { Button, ButtonStyle, ErrorLabel } from '@cutting/component-library';
 import { withFormik, FormikProps } from 'formik';
 import { ConnectedFormInput } from '@cutting/connected-components';
-import axios from 'axios';
-import { HttpStatusCode } from '@cutting/util';
-import { connect } from 'react-redux';
-import { push } from 'connected-react-router';
-import * as Urls from '../../urls';
+import { QueryForecast } from '../../containers/Home/types';
 
 require('./WeatherSelectorForm.scss');
 
@@ -14,20 +10,25 @@ export interface WeatherState {
   city: string;
 }
 
-const Form: React.FunctionComponent<FormikProps<WeatherState>> = (props) => {
-  const { handleSubmit } = props;
+export interface FormProps {
+  loading: boolean;
+  error: string | undefined;
+  query: QueryForecast;
+}
 
-  return (
-    <form action="/weather" onSubmit={handleSubmit}>
-      <ConnectedFormInput {...props} name="city" label="city" placeholder="enter the dragon" />
-      <Button type="submit" buttonStyle={ButtonStyle.Primary}>
-        Submit
-      </Button>
-    </form>
-  );
-};
+type Props = FormProps & FormikProps<WeatherState>;
 
-export const WeatherSelectorFormView = withFormik<{ push: typeof push }, WeatherState>({
+export const Form: React.FunctionComponent<Props> = ({ handleSubmit, error, ...rest }) => (
+  <form action="/weather" onSubmit={handleSubmit}>
+    <ConnectedFormInput {...rest} name="city" label="city" placeholder="enter the dragon" />
+    <Button type="submit" buttonStyle={ButtonStyle.Primary}>
+      Submit
+    </Button>
+    {error && <ErrorLabel errorMessage={error} />}
+  </form>
+);
+
+export const WeatherSelectorForm = withFormik<FormProps, WeatherState>({
   mapPropsToValues: () => ({ city: '' }),
 
   validate: (values) => {
@@ -40,35 +41,10 @@ export const WeatherSelectorFormView = withFormik<{ push: typeof push }, Weather
     return errors;
   },
 
-  handleSubmit: async (values, { setSubmitting, setFieldError, props }) => {
-    try {
-      // const results = await axios.post(['', 'weather', encodeURIComponent(values.city)].join('/'));
-
-      // const forecasts = JSON.parse(results.data).data.list;
-
-      props.push(Urls.Forecast);
-
-      // console.log(forecasts);
-    } catch (err) {
-      console.error(err);
-      if (!err.response) {
-        return;
-      }
-      const errorMessage =
-        err.response.status === HttpStatusCode.NotFound ? 'No such city' : 'Houston, we have a problem';
-
-      setFieldError('city', errorMessage);
-
-      setSubmitting(false);
-    }
+  handleSubmit: async (values, { setSubmitting, props: { query } }) => {
+    query(values.city);
+    setSubmitting(false);
   },
 
   displayName: 'WeatherForm'
 })(Form);
-
-export const WeatherSelectorForm = connect(
-  null,
-  {
-    push
-  }
-)(WeatherSelectorFormView);
