@@ -19,15 +19,15 @@ export type DayProps = OwnProps & StateProps;
 
 const getIconSrc = (icon: string) => `http://openweathermap.org/img/w/${icon}.png`;
 
-export const DayView: React.FunctionComponent<DayProps> = ({ date: { id }, summary: { outlook, date, icon } }) => {
-  const formattedDate = format(parse(date), 'DD MMMM YYYY');
+export const DayView: React.FunctionComponent<DayProps> = ({ date: { id }, summary: { outlook, dateKey, icon } }) => {
+  const formattedDate = format(parse(dateKey), 'DD MMMM YYYY');
   return (
     <div key={id} className={styles.row}>
+      <div>{formattedDate}</div>
       <div>
         <img alt={`${outlook} at ${formattedDate}`} src={getIconSrc(icon)} />
       </div>
-      <div>{outlook}</div>
-      <div>{formattedDate}</div>
+      <div className={styles.detail}>{outlook}</div>
     </div>
   );
 };

@@ -5,6 +5,11 @@
   align-items: flex-flex;
 
   div {
-    @include px(1);
+    @include px(2);
   }
+}
+
+.detail {
+  flex: 1;
+  justify-content: center;
 }
