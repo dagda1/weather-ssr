@@ -18,11 +18,11 @@ export interface FormProps {
 
 type Props = FormProps & FormikProps<WeatherState>;
 
-export const Form: React.FunctionComponent<Props> = ({ handleSubmit, error, ...rest }) => (
+export const Form: React.FunctionComponent<Props> = ({ handleSubmit, loading, error, ...rest }) => (
   <form action="/weather" onSubmit={handleSubmit}>
-    <ConnectedFormInput {...rest} name="city" label="city" placeholder="enter the dragon" />
-    <Button type="submit" buttonStyle={ButtonStyle.Primary}>
-      Submit
+    <ConnectedFormInput {...rest} name="city" label="city" />
+    <Button disabled={loading} type="submit" buttonStyle={ButtonStyle.Primary}>
+      {loading ? 'loading.....' : 'Submit'}
     </Button>
     {error && <ErrorLabel errorMessage={error} />}
   </form>

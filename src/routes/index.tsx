@@ -9,16 +9,15 @@ export interface Page<Props = unknown> extends AsyncRouteProps<Props> {
 }
 
 // TODO: better loader
-const Loading = () => <div>...LOADING...</div>;
+const Loading: React.FunctionComponent = () => <div>...LOADING...</div>;
 
-/* eslint-disable react/display-name */
 export const routes: Page[] = [
   {
     heading: 'Home',
     path: Urls.Home,
     component: asyncComponent({
       loader: () => import('../containers/Home').then((module) => module.Home),
-      Placeholder: () => <Loading />
+      Placeholder: Loading
     }),
     exact: true
   },
@@ -27,12 +26,10 @@ export const routes: Page[] = [
     path: Urls.Forecast,
     component: asyncComponent({
       loader: () => import('../containers/ForecastView').then((module) => module.ConnectedForecast),
-      Placeholder: () => <Loading />
+      Placeholder: Loading
     }),
     exact: true
   }
 ];
-
-export const bannerPages = routes.filter((p) => !p.footerPage && p.path !== Urls.Home);
 
 export const footerPages = routes.filter((p) => p.footerPage);

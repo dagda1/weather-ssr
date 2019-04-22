@@ -25,10 +25,12 @@ export const forecastReducer: Reducer<ForecastState, ForecastActions> = (state =
       return tassign(state, {
         forecast: {
           city: action.payload.city.name,
-          dates: Object.keys(days).map((date) => ({
-            id: date,
-            date
-          })),
+          dates: Object.keys(days)
+            .slice(0, 5) // we only want 5 days
+            .map((date) => ({
+              id: date,
+              date
+            })),
           forecasts: action.payload.list.map((forecast) => {
             const date = fromUnixTime(forecast.dt);
             return {
