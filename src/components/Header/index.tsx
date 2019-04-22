@@ -10,7 +10,7 @@ export const Header: React.FunctionComponent = () => (
       <Wrap>
         <Layout>
           <GelItem>
-            <Heading level={2}>React SSR Weather</Heading>
+            <Heading level={2}>React Server Side Rendered Weather</Heading>
           </GelItem>
         </Layout>
       </Wrap>

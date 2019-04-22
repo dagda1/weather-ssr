@@ -1,8 +1,6 @@
 import React from 'react';
 import { Wrap, Layout, GelItem } from '@cutting/react-gel';
-import { Cow, Github, Twitter } from '@cutting/component-library';
-import { footerPages } from '../../routes';
-import { NavLink } from 'react-router-dom';
+import { ExternalLink, Github, Twitter } from '@cutting/component-library';
 
 const styles = require('./Footer.scss');
 
@@ -13,21 +11,10 @@ export const Footer: React.FunctionComponent = () => (
         <GelItem m="1/3">
           <Layout>
             <GelItem m="1/2" className={styles.logo}>
-              <div className={styles.logo__container}>
-                <div>
-                  <Cow />
-                </div>
-              </div>
               <span className={styles.name}>Paul Cowan</span>
             </GelItem>
             <GelItem m="1/2" className={styles.links}>
-              <ul className={styles.NavLinks}>
-                {footerPages.map((page) => (
-                  <li key={page.path}>
-                    <NavLink to={page.path}>{page.heading}</NavLink>
-                  </li>
-                ))}
-              </ul>
+              <ExternalLink href="mailto:paul.cowan@cutting.scot">paul.cowan@cutting.scot</ExternalLink>
             </GelItem>
           </Layout>
         </GelItem>
@@ -37,19 +24,17 @@ export const Footer: React.FunctionComponent = () => (
               <div>
                 <ul className={styles.social}>
                   <li>
-                    <a href="https://github.com/dagda1" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink href="https://github.com/dagda1">
                       <Github />
-                    </a>
+                    </ExternalLink>
                   </li>
                   <li>
-                    <a href="https://twitter.com/dagda1" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink href="https://twitter.com/dagda1">
                       <Twitter />
-                    </a>
+                    </ExternalLink>
                   </li>
                 </ul>
-                <a href="https://cutting.scot" target="_blank" rel="noopener noreferrer">
-                  Portfolio
-                </a>
+                <ExternalLink href="https://cutting.scot">Portfolio</ExternalLink>
               </div>
             </GelItem>
           </Layout>

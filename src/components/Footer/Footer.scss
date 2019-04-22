@@ -30,6 +30,12 @@ footer {
 
   .links {
     text-align: center;
+
+    @include mb(2);
+
+    @include mq-s {
+      margin-bottom: auto;
+    }
   }
 }
 

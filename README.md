@@ -48,7 +48,13 @@ If all is good you see this in your console:
 
 ![console](./console.png)
 
-Now either click [this link](http://localhost:3000/) open a browser at [http://http://localhost:3000/](http://localhost:3000/)
+Finally, either click [this link](http://localhost:3000/) open a browser at [http://http://localhost:3000/](http://localhost:3000/)
+
+## Build the solution
+
+```bash
+npm run build
+```
 
 ## Run tests
 

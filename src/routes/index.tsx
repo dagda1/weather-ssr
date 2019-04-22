@@ -31,5 +31,3 @@ export const routes: Page[] = [
     exact: true
   }
 ];
-
-export const footerPages = routes.filter((p) => p.footerPage);
