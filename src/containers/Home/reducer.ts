@@ -16,7 +16,7 @@ export const forecastReducer: Reducer<ForecastState, ForecastActions> = (state =
     }
 
     case ForecastActionTypes.FORECAST_ERROR: {
-      return tassign(state, { error: action.error });
+      return tassign(state, { error: action.error, loading: false });
     }
 
     case ForecastActionTypes.FORECAST_SUCCESS: {
