@@ -35,7 +35,6 @@ I have used my own OSS projects rather than one of the bolier plate projects lik
 ## Install
 
 You will need to install [node](https://nodejs.org/en/download/) and [npm](https://www.npmjs.com/get-npm).
-You will need at least yarn@1.5.
 
 You should be running node 11 if possible, that is what I am running and I know node-sass will build on that version.
 

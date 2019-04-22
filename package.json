@@ -9,7 +9,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "doitall": "cross-env npm i && npm start",
+    "doitall": "npm i && npm start",
     "start": "cross-env NODE_ENV=development cutting ssr-start",
     "build": "cross-env NODE_ENV=production cutting ssr-build",
     "test": "cross-env NODE_ENV=test cutting test",
@@ -27,6 +27,7 @@
     "body-parser": "^1.18.2",
     "circular-json": "^0.5.9",
     "classnames": "^2.2.6",
+    
     "connected-react-router": "^6.4.0",
     "date-fns": "^2.0.0-alpha.27",
     "express": "^4.16.2",
@@ -50,7 +51,7 @@
     "zlib": "^1.0.5"
   },
   "devDependencies": {
-    "@cutting/devtools": "^0.9.1",
+    "@cutting/devtools": "^0.11.0",
     "@intervolga/optimize-cssnano-plugin": "^1.0.6",
     "@types/assets-webpack-plugin": "^3.9.0",
     "@types/classnames": "^2.2.6",
@@ -121,7 +122,7 @@
     "url-loader": "^1.1.2",
     "webpack": "^4.29.6",
     "webpack-bundle-analyzer": "^3.1.0",
-    "webpack-dev-server-speedy": "^3.1.1",
+    "webpack-dev-server": "^3.1.14",
     "webpack-merge": "^4.2.1",
     "webpack-node-externals": "^1.7.2",
     "webpackbar": "^3.1.5"
