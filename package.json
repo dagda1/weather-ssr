@@ -27,12 +27,10 @@
     "body-parser": "^1.18.2",
     "circular-json": "^0.5.9",
     "classnames": "^2.2.6",
-    
     "connected-react-router": "^6.4.0",
     "date-fns": "^2.0.0-alpha.27",
     "express": "^4.16.2",
     "global": "^4.3.2",
-    "handler-builder": "^1.1.0",
     "helmet": "^3.12.1",
     "history": "^4.7.2",
     "lodash.groupby": "^4.6.0",

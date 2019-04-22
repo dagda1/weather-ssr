@@ -44,6 +44,12 @@ Once node npm is installed, run
  npm run doitall
 ```
 
+If all is good you see this in your console:
+
+![console](./console.png)
+
+Now either click [this link](http://localhost:3000/) open a browser at [http://http://localhost:3000/](http://localhost:3000/)
+
 ## Run tests
 
 The tests use jest.  I've not gone overboard with testing but just enough to show I can write js tests. I am fully versed in the world of js tests.
