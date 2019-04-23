@@ -25,16 +25,12 @@ export const Footer: React.FunctionComponent = () => (
                 <ul className={styles.social}>
                   <li>
                     <ExternalLink href="https://github.com/dagda1">
-                      <svg width="20" height="20" viewBox="0 0 200 200">
-                        <Github />
-                      </svg>
+                      <Github />
                     </ExternalLink>
                   </li>
                   <li>
                     <ExternalLink href="https://twitter.com/dagda1">
-                      <svg width="20" height="20" viewBox="0 0 200 200">
-                        <Twitter />
-                      </svg>
+                      <Twitter />
                     </ExternalLink>
                   </li>
                 </ul>

@@ -12,6 +12,10 @@ footer {
   @include mq-m {
     font-size: 19px;
   }
+
+  svg {
+    visibility: visible;
+  }
 }
 
 .logo__container {
@@ -74,8 +78,8 @@ footer {
     line-height: 21px;
 
     a {
-      // display: inline-block;
-      // width: 20px;
+      display: inline-block;
+      width: 20px;
     }
 
     svg {

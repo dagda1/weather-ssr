@@ -45,7 +45,7 @@ if (isProduction) {
       directives: {
         defaultSrc: ["'self'"],
         scriptSrc: ["'self'"],
-        styleSrc: ["'unsafe-inline'"],
+        styleSrc: ["'self'"],
         imgSrc: ["'self'", 'openweathermap.org', 'data:']
       }
     })
