@@ -13,7 +13,6 @@ import configureStore from '../store';
 import { history } from '../routes/history';
 import { Store } from 'redux';
 import { Provider } from 'react-redux';
-import { ApplicationLayout } from '../layouts/ApplicationLayout';
 import { currentConfig } from './config';
 import axios from 'axios';
 import circularJson from 'circular-json';
@@ -56,11 +55,7 @@ if (isProduction) {
 /* eslint-disable no-console */
 
 const createConnectedLayout = (store: Store): React.FunctionComponent<LayoutProps> => {
-  const Wrapped: React.FunctionComponent<LayoutProps> = ({ children }) => (
-    <ApplicationLayout>
-      <Provider store={store}>{children}</Provider>
-    </ApplicationLayout>
-  );
+  const Wrapped: React.FunctionComponent<LayoutProps> = ({ children }) => <Provider store={store}>{children}</Provider>;
 
   Wrapped.displayName = getDisplayName(Wrapped);
 

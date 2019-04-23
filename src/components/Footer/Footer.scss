@@ -19,11 +19,6 @@ footer {
   display: inline-block;
   vertical-align: middle;
 
-  svg {
-    width: 100%;
-    height: auto;
-  }
-
   > div {
     margin-top: -5px;
   }
@@ -79,13 +74,14 @@ footer {
     line-height: 21px;
 
     a {
-      display: inline-block;
-      width: 20px;
+      // display: inline-block;
+      // width: 20px;
     }
 
     svg {
       width: 100%;
       height: auto;
+      overflow: visible;
     }
   }
 }
