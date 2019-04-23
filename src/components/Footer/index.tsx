@@ -24,26 +24,18 @@ export const Footer: React.FunctionComponent = () => (
               <div>
                 <ul className={styles.social}>
                   <li>
-                    <a
-                      href="https://github.com/dagda1"
-                      data-selector="external-link"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                      style={{ display: 'inline-block', width: '20px' }}
-                    >
-                      <Github />
-                    </a>
+                    <ExternalLink href="https://github.com/dagda1">
+                      <svg width="20" height="20" viewBox="0 0 200 200">
+                        <Github />
+                      </svg>
+                    </ExternalLink>
                   </li>
                   <li>
-                    <a
-                      href="https://twitter.com/dagda1"
-                      data-selector="external-link"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                      style={{ display: 'inline-block', width: '20px' }}
-                    >
-                      <Twitter />
-                    </a>
+                    <ExternalLink href="https://twitter.com/dagda1">
+                      <svg width="20" height="20" viewBox="0 0 200 200">
+                        <Twitter />
+                      </svg>
+                    </ExternalLink>
                   </li>
                 </ul>
                 <ExternalLink href="https://cutting.scot">Portfolio</ExternalLink>
